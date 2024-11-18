@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resistor Color Code Calculator</title>
+<style>
+  body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  input {
+    padding: 5px;
+    margin: 5px;
+  }
+  button {
+    padding: 8px 10px;
+    margin: 5px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    font-size: 10vw;
+  }
+  label {
+    font: 30px;
+    color: white;
+  }
+  input {
+    font-size: 30px;
+    height: 8vw;
+    width: 40vw;
+  }
+  button {
+    font-size: 30px;
+  }
+  div {
+    color: white;
+    font-size: 30px;
+  }
+  table, th, td, tr {
+    border-width: 1px;
+    border-color: black;
+    border-style: solid;
+  }
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+  tr, td, th, table:nth-child(even) {
+    color: black;
+  }
+  table {
+    background-color: white;
+  }
+  h1 {
+    color: white;
+  }
+  label {
+    color: white;
+  }
+  div {
+    font-size: 20px;
+  }
+  select {
+    font-size: 5vw;
+  }
+  p {
+    color: white;
+  }
+  h1 {
+    font-size: 20px;
+  }
+  #resistor-image {
+    width: 300px;
+    height: 60px;
+    margin: 20px auto;
+    border: 1px solid green;
+    background-color:lime;
+  }
+  #resistor-image div {
+    display: inline-block;
+    height: 100%;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+<div id="result"></div>
+  <div id="tolerance"></div>
+  <div id="maxTolerance"></div>
+  <div id="minTolerance"></div>
+    <button onclick="calculateResistance()">Calculate</button><br>
+
+  <label for="firstColor">First Color:</label><br>
+  <select id="firstColor">
+    <option value="black">Black</option>
+    <option value="brown">Brown</option>
+    <option value="red">Red</option>
+    <option value="orange">Orange</option>
+    <option value="yellow">Yellow</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+    <option value="violet">Violet</option>
+    <option value="gray">Gray</option>
+    <option value="white">White</option>
+  </select><br>
+
+  <label for="secondColor">Second Color:</label><br>
+  <select id="secondColor">
+    <option value="black">Black</option>
+    <option value="brown">Brown</option>
+    <option value="red">Red</option>
+    <option value="orange">Orange</option>
+    <option value="yellow">Yellow</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+    <option value="violet">Violet</option>
+    <option value="gray">Gray</option>
+    <option value="white">White</option>
+  </select><br>
+
+  <label for="thirdColor">Third Color:</label><br>
+  <select id="thirdColor">
+    <option value="black">Black</option>
+    <option value="brown">Brown</option>
+    <option value="red">Red</option>
+    <option value="orange">Orange</option>
+    <option value="yellow">Yellow</option>
+    <option value="green">Green</option>
+    <option value="blue">Blue</option>
+    <option value="violet">Violet</option>
+    <option value="gray">Gray</option>
+    <option value="white">White</option>
+    <option value="gold">Gold</option>
+    <option value="silver">Silver</option>
+  </select><br>
+ 
+  <label for="fourthColor">Fourth Color:</label><br>
+  <select id="fourthColor">
+    <option value="">-</option>
+    <option value="gold">Gold</option>
+    <option value="silver">Silver</option>
+    
+    
+  
+  </select><br>
+<div id="resistor-image">
+    <div id="band1" style="width: 76px; background-color: #964b00;"></div>
+    <div id="band2" style="width: 12px; background-color: #9acd32;"></div>
+    <div id="band3" style="width: 12px; background-color: #ff0000;"></div>
+    <div id="band4" style="width: 12px; background-color: #ff0000;"></div>
+  </div>
+
+  <p>developer: lorenz_cpp</p>
+  <h1>Resistor Color Code Table</h1>
+  <table>
+    <tr>
+      <th>Color</th>
+      <th>Value</th>
+      <th>Multiplier</th>
+      <th>Tolerance</th>
+    </tr>
+    <tr>
+      <td>Black</td>
+      <td>0</td>
+      <td>x1</td>
+    </tr>
+    <tr>
+      <td>Brown</td>
+      <td>1</td>
+      <td>x10</td>
+    </tr>
+    <tr>
+      <td>Red</td>
+      <td>2</td>
+      <td>x100</td>
+    </tr>
+    <tr>
+      <td>Orange</td>
+      <td>3</td>
+      <td>x1000</td>
+    </tr>
+    <tr>
+      <td>Yellow</td>
+      <td>4</td>
+      <td>x10000</td>
+    </tr>
+    <tr>
+      <td>Green</td>
+      <td>5</td>
+      <td>x100000</td>
+    </tr>
+    <tr>
+      <td>Blue</td>
+      <td>6</td>
+      <td>x1000000</td>
+    </tr>
+    <tr>
+      <td>Violet</td>
+      <td>7</td>
+      <td>x10000000</td>
+    </tr>
+    <tr>
+      <td>Gray</td>
+      <td>8</td>
+      <td>x100000000</td>
+    </tr>
+    <tr>
+      <td>White</td>
+      <td>9</td>
+      <td>x1000000000</td>
+    </tr>
+    <tr>
+      <td>Silver</td>
+      <td>#</td>
+      <td>0.01</td>
+      <td>±10%</td>
+    </tr>
+    <tr>
+      <td>Gold</td>
+      <td>#</td>
+      <td>0.1</td>
+      <td>±5%</td>
+    </tr>
+  </table>
+
+  
+
+  <script>
+    function colortodigit(shin) {
+      const digit = {
+        'black': 0,
+        'brown': 1,
+        'red': 2,
+        'orange': 3,
+        'yellow': 4,
+        'green': 5,
+        'blue': 6,
+        'violet': 7,
+        'gray': 8,
+        'white': 9
+      };
+      return digit[shin.toLowerCase()];
+    }
+
+    function colorofmultiplier(shin) {
+      const multiplier = {
+        'black': 1,
+        'brown': 10,
+        'red': 100,
+        'orange': 1000,
+        'yellow': 10000,
+        'green': 100000,
+        'blue': 1000000,
+        'violet': 10000000,
+        'gray': 100000000,
+        'white': 1000000000,
+        'gold': 0.01,
+        'silver': 0.1
+      };
+      return multiplier[shin.toLowerCase()];
+    }
+
+    function colortotolerance(shin) {
+      const tolerance = {
+        'gold': 5,
+        'silver': 10
+      };
+      return tolerance[shin.toLowerCase()];
+    }
+
+    function resistance(first, second, third, fourth) {
+      const firstcolor = colortodigit(first);
+      const secondcolor = colortodigit(second);
+      const thirdcolor = colorofmultiplier(third);
+      const fourthcolor = colortotolerance(fourth);
+      let resistanceVal = (parseFloat(firstcolor * 10 + secondcolor)) * thirdcolor;
+
+      let unit = 'Ω';
+      if (resistanceVal >= 1000000000) {
+        resistanceVal /= 1000000000; // convert to gigaohms
+        unit = 'G Ω';
+      } else if (resistanceVal >= 1000000) {
+        resistanceVal /= 1000000; // convert to megaohms
+        unit = 'M Ω';
+      } else if (resistanceVal >= 1000) {
+        resistanceVal /= 1000; // convert to kiloohms
+        unit = 'K Ω';
+      }
+
+      if (fourthcolor !== undefined) {
+        document.getElementById('tolerance').innerText = `Tolerance: ±${fourthcolor}%`;
+        const maxTolerance = resistanceVal * (1 + fourthcolor / 100);
+        const minTolerance = resistanceVal * (1 - fourthcolor / 100);
+        document.getElementById('maxTolerance').innerText = `Maximum Tolerance: ${maxTolerance} ${unit}`;
+        document.getElementById('minTolerance').innerText = `Minimum Tolerance: ${minTolerance} ${unit}`;
+        return `Nominal Value: ${resistanceVal} ${unit}`;
+      }
+    }
+
+    function calculateResistance() {
+      const first = document.getElementById('firstColor').value;
+      const second = document.getElementById('secondColor').value;
+      const third = document.getElementById('thirdColor').value;
+      const fourth = document.getElementById('fourthColor').value;
+
+      const total = resistance(first, second, third, fourth);
+      document.getElementById('result').innerText = total;
+
+      // Update resistor image
+      document.getElementById('band1').style.backgroundColor = getColor(first);
+      document.getElementById('band2').style.backgroundColor = getColor(second);
+      document.getElementById('band3').style.backgroundColor = getColor(third);
+      document.getElementById('band4').style.backgroundColor = getColor(fourth);
+    }
+
+    function getColor(colorName) {
+      const colorMap = {
+        'black': '#000000',
+        'brown': '#964b00',
+        'red': '#ff0000',
+        'orange': '#ffa500',
+        'yellow': '#ffff00',
+        'green': '#9acd32',
+        'blue': '#6495ed',
+        'violet': '#9400d3',
+        'gray': '#a0a0a0',
+        'white': '#ffffff',
+        'gold': '#cfb53b',
+        'silver': '#c0c0c0'
+      };
+      return colorMap[colorName.toLowerCase()];
+    }
+  </script>
+</body>
+</html>
